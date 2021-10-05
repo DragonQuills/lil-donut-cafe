@@ -1,26 +1,22 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Donuts/Glaze/glazing_4.png" type="Texture" id=1]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_2.png" type="Texture" id=2]
-[ext_resource path="res://assets/Donuts/Glaze/glazing_zigzag_4.png" type="Texture" id=3]
+[ext_resource path="res://assets/Donuts/Accents/accent_2.png" type="Texture" id=3]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_3.png" type="Texture" id=4]
-[ext_resource path="res://assets/Donuts/Glaze/glazing_zigzag_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/Donuts/Accents/accent_1.png" type="Texture" id=5]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_5.png" type="Texture" id=6]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_3.png" type="Texture" id=7]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_6.png" type="Texture" id=8]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_4.png" type="Texture" id=9]
 [ext_resource path="res://assets/Donuts/Base/donut_3.png" type="Texture" id=10]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_2.png" type="Texture" id=11]
-[ext_resource path="res://assets/Donuts/Glaze/glazing_zigzag_3.png" type="Texture" id=12]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_5.png" type="Texture" id=13]
-[ext_resource path="res://assets/Donuts/Glaze/glazing_zigzag_1.png" type="Texture" id=14]
 [ext_resource path="res://assets/Donuts/Base/donut_1.png" type="Texture" id=15]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_1.png" type="Texture" id=16]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_1.png" type="Texture" id=17]
 [ext_resource path="res://assets/Donuts/Stripes/stripes_1.png" type="Texture" id=18]
-[ext_resource path="res://assets/Donuts/Stripes/stripes_3.png" type="Texture" id=19]
 [ext_resource path="res://assets/Donuts/Stripes/stripes_2.png" type="Texture" id=20]
-[ext_resource path="res://assets/Donuts/Stripes/stripes_4.png" type="Texture" id=21]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 131.111
@@ -40,7 +36,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "brown",
 "speed": 5.0
@@ -50,17 +46,17 @@ animations = [ {
 "name": "green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 17 ) ],
 "loop": false,
 "name": "pink",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "tan",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "white",
 "speed": 5.0
@@ -68,6 +64,19 @@ animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": false,
 "name": "yellow",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "dark",
 "speed": 5.0
 } ]
 
@@ -82,19 +91,9 @@ animations = [ {
 "loop": false,
 "name": "white",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": false,
-"name": "light",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "dark",
-"speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": false,
@@ -135,10 +134,14 @@ animation = "vanilla"
 frames = SubResource( 3 )
 animation = "pink"
 
+[node name="Accent" type="AnimatedSprite" parent="Glaze"]
+frames = SubResource( 4 )
+animation = "dark"
+
 [node name="Stripes" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
-animation = "light"
+animation = "white"
 
 [node name="Sprinkles" type="AnimatedSprite" parent="."]
-frames = SubResource( 4 )
+frames = SubResource( 6 )
 animation = "confetti"
