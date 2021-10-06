@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Donuts/Glaze/glazing_4.png" type="Texture" id=1]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_2.png" type="Texture" id=2]
@@ -13,10 +13,12 @@
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_2.png" type="Texture" id=11]
 [ext_resource path="res://scenes/Donut/Donut.cs" type="Script" id=12]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_5.png" type="Texture" id=13]
+[ext_resource path="res://assets/Donuts/Base/donut_1_unbaked.png" type="Texture" id=14]
 [ext_resource path="res://assets/Donuts/Base/donut_1.png" type="Texture" id=15]
 [ext_resource path="res://assets/Donuts/Sprinkles/sprinkles_1.png" type="Texture" id=16]
 [ext_resource path="res://assets/Donuts/Glaze/glazing_1.png" type="Texture" id=17]
 [ext_resource path="res://assets/Donuts/Stripes/stripes_1.png" type="Texture" id=18]
+[ext_resource path="res://assets/Donuts/Base/donut_3_unbaked.png" type="Texture" id=19]
 [ext_resource path="res://assets/Donuts/Stripes/stripes_2.png" type="Texture" id=20]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -32,6 +34,16 @@ animations = [ {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
 "name": "vanilla",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "chocolate_unbaked",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "vanilla_unbaked",
 "speed": 5.0
 } ]
 
@@ -123,29 +135,39 @@ animations = [ {
 } ]
 
 [node name="Donut" type="KinematicBody2D"]
+position = Vector2( 247.295, 260.509 )
 input_pickable = true
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Base" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 2 )
-animation = "vanilla"
+animation = "chocolate"
 
 [node name="Glaze" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 3 )
 animation = "pink"
 
 [node name="Accent" type="AnimatedSprite" parent="Glaze"]
+visible = false
 frames = SubResource( 4 )
 animation = "dark"
 
 [node name="Stripes" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 5 )
 animation = "white"
 
 [node name="Sprinkles" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 6 )
 animation = "confetti"
 
