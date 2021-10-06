@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/donut_2.png-572ea59a9600c7c53554a7e0f5144b60.stex"
+path="res://.import/donut_3_unbaked.png-d27f68501199af41a0681e73bfe826a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Donuts/Base/donut_2.png"
-dest_files=[ "res://.import/donut_2.png-572ea59a9600c7c53554a7e0f5144b60.stex" ]
+source_file="res://assets/Donuts/Base/donut_3_unbaked.png"
+dest_files=[ "res://.import/donut_3_unbaked.png-d27f68501199af41a0681e73bfe826a6.stex" ]
 
 [params]
 
