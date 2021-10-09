@@ -37,14 +37,14 @@ animations = [ {
 "name": "vanilla",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "vanilla_unbaked",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "chocolate_unbaked",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "vanilla_unbaked",
 "speed": 5.0
 } ]
 
@@ -60,24 +60,24 @@ animations = [ {
 "name": "green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": false,
-"name": "tan",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": false,
 "name": "pink",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": false,
-"name": "yellow",
+"name": "tan",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "white",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "yellow",
 "speed": 5.0
 } ]
 
