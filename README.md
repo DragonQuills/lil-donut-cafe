@@ -1,4 +1,4 @@
-# Lil Donut Café
+# Lil Donut Cafe
 A game about making and selling donuts. Built in Godot Mono and C# with assets from Kenney's Game Assets 1.
 
 This game is currently **in the early stages of development** and has not yet had a release.
