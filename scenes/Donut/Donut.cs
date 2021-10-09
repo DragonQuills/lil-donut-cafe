@@ -5,7 +5,7 @@ public class Donut : KinematicBody2D {
 	// Declare member variables here. Examples:
 	private bool dragging = false;
 	private int LEFT_MOUSE_BUTTON = 1;
-    Random random;
+    Random _random;
 
 	private AnimatedSprite _base;
 	private AnimatedSprite _glaze;
@@ -26,24 +26,22 @@ public class Donut : KinematicBody2D {
 		_stripes = GetNode<AnimatedSprite>("Stripes");
 		_sprinkles = GetNode<AnimatedSprite>("Sprinkles");
 
-        random = new Random();
-        CreateRandomDonut(sprinkles: true, stripes: true);
-		GD.Print("Loaded!");
+        _random = new Random();
 	}
 
     public void CreateRandomDonut(bool sprinkles = false, bool stripes = false){
-        int randomBaseIndex = random.Next(0, _baseOptions.Length);
+        int randomBaseIndex = _random.Next(0, _baseOptions.Length);
         this.SetBase(_baseOptions[randomBaseIndex]);
 
-        int randomGlazeIndex = random.Next(0, _glazeOptions.Length);
+        int randomGlazeIndex = _random.Next(0, _glazeOptions.Length);
         this.SetGlaze(_glazeOptions[randomGlazeIndex]);
 
         if(sprinkles){
-            int randomSprinkleIndex = random.Next(0, _sprinkleOptions.Length);
+            int randomSprinkleIndex = _random.Next(0, _sprinkleOptions.Length);
             this.SetSprinkles(_sprinkleOptions[randomSprinkleIndex]);
         }
         if(stripes){
-            int randomStripeIndex = random.Next(0, _stripeOptions.Length);
+            int randomStripeIndex = _random.Next(0, _stripeOptions.Length);
             this.SetStripes(_stripeOptions[randomStripeIndex]);
         }
     }
