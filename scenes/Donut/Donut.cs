@@ -45,6 +45,13 @@ public class Donut : KinematicBody2D {
             this.SetStripes(_stripeOptions[randomStripeIndex]);
         }
     }
+
+	public void Bake(){
+		string currAnimation = _base.Animation;
+		int indexOfUnderscore = currAnimation.IndexOf("_");
+		_base.Animation = currAnimation.Remove(indexOfUnderscore, currAnimation.Length-indexOfUnderscore);
+	}
+
 	public void SetBase(string baseType){
 		_base.Animation = baseType;
         _base.Visible = true;
