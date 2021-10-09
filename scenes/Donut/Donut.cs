@@ -5,38 +5,63 @@ public class Donut : KinematicBody2D {
 	// Declare member variables here. Examples:
 	private bool dragging = false;
 	private int LEFT_MOUSE_BUTTON = 1;
+    Random random;
 
 	private AnimatedSprite _base;
 	private AnimatedSprite _glaze;
+    
 	private AnimatedSprite _stripes;
+
 	private AnimatedSprite _sprinkles;
 
-	// Called when the node enters the scene tree for the first time.
+    // Options used to randomly generate a donut a customer wants
+    private string[] _baseOptions = { "vanilla", "chocolate" };
+    private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
+    private string[] _stripeOptions = {"brown", "white"};
+    private string[] _sprinkleOptions = {"brown", "confetti", "gold", "purple", "white"};
+    // Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		_base = GetNode<AnimatedSprite>("Base");
 		_glaze = GetNode<AnimatedSprite>("Glaze");
 		_stripes = GetNode<AnimatedSprite>("Stripes");
 		_sprinkles = GetNode<AnimatedSprite>("Sprinkles");
-        this.setBase("vanilla");
-        this.setStripes("white");
-        this.setSprinkles("confetti");
-	} 
-	public void setBase(string baseType){
+
+        random = new Random();
+        CreateRandomDonut(sprinkles: true, stripes: true);
+		GD.Print("Loaded!");
+	}
+
+    public void CreateRandomDonut(bool sprinkles = false, bool stripes = false){
+        int randomBaseIndex = random.Next(0, _baseOptions.Length);
+        this.SetBase(_baseOptions[randomBaseIndex]);
+
+        int randomGlazeIndex = random.Next(0, _glazeOptions.Length);
+        this.SetGlaze(_glazeOptions[randomGlazeIndex]);
+
+        if(sprinkles){
+            int randomSprinkleIndex = random.Next(0, _sprinkleOptions.Length);
+            this.SetSprinkles(_sprinkleOptions[randomSprinkleIndex]);
+        }
+        if(stripes){
+            int randomStripeIndex = random.Next(0, _stripeOptions.Length);
+            this.SetStripes(_stripeOptions[randomStripeIndex]);
+        }
+    }
+	public void SetBase(string baseType){
 		_base.Animation = baseType;
         _base.Visible = true;
 	}
 
-	public void setGlaze(string glazeType){
-		_glaze.Animation = glazeType;
-        _glaze.Visible = true;
+	public void SetGlaze(string glazeType){
+		_glaze.Call("SetGlaze", glazeType);
 	}
 
-	public void setStripes(string stripesType){
+	public void SetStripes(string stripesType){
 		_stripes.Animation = stripesType;
         _stripes.Visible = true;
 	}
     
-	public void setSprinkles(string sprinklesType){
+	public void SetSprinkles(string sprinklesType){
 		_sprinkles.Animation = sprinklesType;
         _sprinkles.Visible = true;
 	}
