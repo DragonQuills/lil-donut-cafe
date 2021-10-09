@@ -2,7 +2,6 @@ using Godot;
 using System;
 
 public class Donut : KinematicBody2D {
-	// Declare member variables here. Examples:
 	private bool dragging = false;
 	private int LEFT_MOUSE_BUTTON = 1;
 	Random _random;
@@ -19,7 +18,7 @@ public class Donut : KinematicBody2D {
 	private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
 	private string[] _stripeOptions = {"brown", "white"};
 	private string[] _sprinkleOptions = {"brown", "confetti", "gold", "purple", "white"};
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready() {
 		_base = GetNode<AnimatedSprite>("Base");
 		_glaze = GetNode<AnimatedSprite>("Glaze");
@@ -71,7 +70,6 @@ public class Donut : KinematicBody2D {
 		_sprinkles.Visible = true;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta) {
 		if (dragging){
 			Vector2 mousePosition = GetViewport().GetMousePosition();
@@ -86,7 +84,6 @@ public class Donut : KinematicBody2D {
 			}
 		}
 		if(@event is InputEventScreenDrag eventScreenDrag){
-			// if(eventScreenTouch.Pressed && eventScreenTouch.Index == 0)
 			this.Position = eventScreenDrag.Position;
 		}
 
