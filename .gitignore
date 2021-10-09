@@ -13,6 +13,11 @@ data_*/
 
 # Exports
 exports/
+android/
 
 # Mac ignores
 *.DS_Store
+
+# VScode ignores
+.vscode/
+.vs
