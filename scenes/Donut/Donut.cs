@@ -5,46 +5,46 @@ public class Donut : KinematicBody2D {
 	// Declare member variables here. Examples:
 	private bool dragging = false;
 	private int LEFT_MOUSE_BUTTON = 1;
-    Random _random;
+	Random _random;
 
 	private AnimatedSprite _base;
 	private AnimatedSprite _glaze;
-    
+	
 	private AnimatedSprite _stripes;
 
 	private AnimatedSprite _sprinkles;
 
-    // Options used to randomly generate a donut a customer wants
-    private string[] _baseOptions = { "vanilla", "chocolate" };
-    private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
-    private string[] _stripeOptions = {"brown", "white"};
-    private string[] _sprinkleOptions = {"brown", "confetti", "gold", "purple", "white"};
-    // Called when the node enters the scene tree for the first time.
+	// Options used to randomly generate a donut a customer wants
+	private string[] _baseOptions = { "vanilla", "chocolate" };
+	private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
+	private string[] _stripeOptions = {"brown", "white"};
+	private string[] _sprinkleOptions = {"brown", "confetti", "gold", "purple", "white"};
+	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		_base = GetNode<AnimatedSprite>("Base");
 		_glaze = GetNode<AnimatedSprite>("Glaze");
 		_stripes = GetNode<AnimatedSprite>("Stripes");
 		_sprinkles = GetNode<AnimatedSprite>("Sprinkles");
 
-        _random = new Random();
+		_random = new Random();
 	}
 
-    public void CreateRandomDonut(bool sprinkles = false, bool stripes = false){
-        int randomBaseIndex = _random.Next(0, _baseOptions.Length);
-        this.SetBase(_baseOptions[randomBaseIndex]);
+	public void CreateRandomDonut(bool sprinkles = false, bool stripes = false){
+		int randomBaseIndex = _random.Next(0, _baseOptions.Length);
+		this.SetBase(_baseOptions[randomBaseIndex]);
 
-        int randomGlazeIndex = _random.Next(0, _glazeOptions.Length);
-        this.SetGlaze(_glazeOptions[randomGlazeIndex]);
+		int randomGlazeIndex = _random.Next(0, _glazeOptions.Length);
+		this.SetGlaze(_glazeOptions[randomGlazeIndex]);
 
-        if(sprinkles){
-            int randomSprinkleIndex = _random.Next(0, _sprinkleOptions.Length);
-            this.SetSprinkles(_sprinkleOptions[randomSprinkleIndex]);
-        }
-        if(stripes){
-            int randomStripeIndex = _random.Next(0, _stripeOptions.Length);
-            this.SetStripes(_stripeOptions[randomStripeIndex]);
-        }
-    }
+		if(sprinkles){
+			int randomSprinkleIndex = _random.Next(0, _sprinkleOptions.Length);
+			this.SetSprinkles(_sprinkleOptions[randomSprinkleIndex]);
+		}
+		if(stripes){
+			int randomStripeIndex = _random.Next(0, _stripeOptions.Length);
+			this.SetStripes(_stripeOptions[randomStripeIndex]);
+		}
+	}
 
 	public void Bake(){
 		string currAnimation = _base.Animation;
@@ -54,7 +54,7 @@ public class Donut : KinematicBody2D {
 
 	public void SetBase(string baseType){
 		_base.Animation = baseType;
-        _base.Visible = true;
+		_base.Visible = true;
 	}
 
 	public void SetGlaze(string glazeType){
@@ -63,12 +63,12 @@ public class Donut : KinematicBody2D {
 
 	public void SetStripes(string stripesType){
 		_stripes.Animation = stripesType;
-        _stripes.Visible = true;
+		_stripes.Visible = true;
 	}
-    
+	
 	public void SetSprinkles(string sprinklesType){
 		_sprinkles.Animation = sprinklesType;
-        _sprinkles.Visible = true;
+		_sprinkles.Visible = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
