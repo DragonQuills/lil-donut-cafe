@@ -5,8 +5,10 @@ public class Donut : KinematicBody2D {
 	public bool draggable = true;
 	private bool _dragging = false;
 	private Vector2 _touchPosition;
-	Random _random;
 
+    [Signal]
+    public delegate void DonutReleased(KinematicBody2D self);
+	Random _random;
 	private AnimatedSprite _base;
 	private AnimatedSprite _glaze;
 	
@@ -85,6 +87,7 @@ public class Donut : KinematicBody2D {
 			}
 			else{
 				_dragging = false;
+				EmitSignal(nameof(DonutReleased), this);
 			}
 		}
 	}
