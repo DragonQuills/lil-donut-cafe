@@ -2,9 +2,8 @@ using Godot;
 using System;
 
 public class Donut : KinematicBody2D {
-	private bool dragging = false;
+	private bool _dragging = false;
 	private Vector2 _touchPosition;
-	private int LEFT_MOUSE_BUTTON = 1;
 	Random _random;
 
 	private AnimatedSprite _base;
@@ -72,7 +71,7 @@ public class Donut : KinematicBody2D {
 	}
 
 	public override void _Process(float delta) {
-		if (dragging){
+		if (_dragging){
 			this.Position = _touchPosition;
 		}
 	}
@@ -81,10 +80,10 @@ public class Donut : KinematicBody2D {
 		if(@event is InputEventScreenTouch eventScreenTouch){
 			if(eventScreenTouch.Pressed && eventScreenTouch.Index == 0){
 				_touchPosition = eventScreenTouch.Position;
-				dragging = true;
+				_dragging = true;
 			}
 			else{
-				dragging = false;
+				_dragging = false;
 			}
 		}
 	}
@@ -92,12 +91,12 @@ public class Donut : KinematicBody2D {
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventScreenDrag eventScreenDrag)
-			if(dragging){
+			if(_dragging){
                 _touchPosition = eventScreenDrag.Position;
 			}
 		if(@event is InputEventScreenTouch eventScreenTouch){
 			if(!eventScreenTouch.Pressed){
-				dragging = false;
+				_dragging = false;
 			}
 		}
 	}
