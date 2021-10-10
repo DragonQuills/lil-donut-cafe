@@ -136,27 +136,26 @@ animations = [ {
 } ]
 
 [node name="Donut" type="KinematicBody2D"]
-position = Vector2( 247.295, 260.509 )
 input_pickable = true
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 1 )
 
 [node name="Base" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 2 )
 animation = "chocolate"
 
 [node name="Glaze" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 3 )
 animation = "pink"
 script = ExtResource( 21 )
 
 [node name="Accent" type="AnimatedSprite" parent="Glaze"]
+visible = false
 frames = SubResource( 4 )
 animation = "light"
 
