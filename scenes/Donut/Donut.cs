@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 public class Donut : KinematicBody2D {
+	public bool draggable = true;
 	private bool _dragging = false;
 	private Vector2 _touchPosition;
 	Random _random;
@@ -78,7 +79,7 @@ public class Donut : KinematicBody2D {
 
 	public void _on_Donut_input_event(object viewport, object @event, int shape_idx) {
 		if(@event is InputEventScreenTouch eventScreenTouch){
-			if(eventScreenTouch.Pressed && eventScreenTouch.Index == 0){
+			if(draggable && eventScreenTouch.Pressed && eventScreenTouch.Index == 0){
 				_touchPosition = eventScreenTouch.Position;
 				_dragging = true;
 			}
