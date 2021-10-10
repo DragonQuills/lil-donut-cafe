@@ -79,7 +79,7 @@ public class Donut : KinematicBody2D {
 
 	public void _on_Donut_input_event(object viewport, object @event, int shape_idx) {
 		if(@event is InputEventScreenTouch eventScreenTouch){
-			if(eventScreenTouch.Pressed){
+			if(eventScreenTouch.Pressed && eventScreenTouch.Index == 0){
 				_touchPosition = eventScreenTouch.Position;
 				dragging = true;
 			}
