@@ -3,6 +3,7 @@ using System;
 
 public class Donut : KinematicBody2D {
 	private bool dragging = false;
+	private Vector2 _touchPosition;
 	private int LEFT_MOUSE_BUTTON = 1;
 	Random _random;
 
@@ -72,20 +73,32 @@ public class Donut : KinematicBody2D {
 
 	public override void _Process(float delta) {
 		if (dragging){
-			Vector2 mousePosition = GetViewport().GetMousePosition();
-			this.Position = mousePosition;
+			this.Position = _touchPosition;
 		}
 	}
 
 	public void _on_Donut_input_event(object viewport, object @event, int shape_idx) {
-		if(@event is InputEventMouseButton eventMouseButton){
-			if(eventMouseButton.ButtonIndex == LEFT_MOUSE_BUTTON){
-				dragging = !dragging;
+		if(@event is InputEventScreenTouch eventScreenTouch){
+			if(eventScreenTouch.Pressed){
+				_touchPosition = eventScreenTouch.Position;
+				dragging = true;
+			}
+			else{
+				dragging = false;
 			}
 		}
-		if(@event is InputEventScreenDrag eventScreenDrag){
-			this.Position = eventScreenDrag.Position;
-		}
+	}
 
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventScreenDrag eventScreenDrag)
+			if(dragging){
+                _touchPosition = eventScreenDrag.Position;
+			}
+		if(@event is InputEventScreenTouch eventScreenTouch){
+			if(!eventScreenTouch.Pressed){
+				dragging = false;
+			}
+		}
 	}
 }
