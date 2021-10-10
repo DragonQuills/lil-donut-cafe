@@ -1,24 +1,21 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class Frier : Area2D
 {
-    Node bodyInFrier = null;
+    List<Node> bodiesInFrier = new List<Node>();
 
     private void _on_Frier_body_entered(Node body){
-        bodyInFrier = body;
-        GD.Print("Frier entered");
+        bodiesInFrier.Add(body);
     }
     private void _on_Frier_body_exited(Node body){
-        bodyInFrier = null;
-        GD.Print("Frier exited");
+        bodiesInFrier.Remove(body);
     }
 
-    public void on_DonutReleased(KinematicBody2D donut){
-        GD.Print("connection successful");
-        if (donut == bodyInFrier){
-            GD.Print("There's a donut in here!");
+    private void _on_DonutReleased(Donut donut){
+        if (bodiesInFrier.Contains(donut)){
+            donut.draggable = false;
         }
-
     }
 }
