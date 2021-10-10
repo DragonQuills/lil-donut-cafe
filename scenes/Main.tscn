@@ -1,3 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Frier/Frier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Donut/Donut.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
+
+[node name="Frier" parent="." instance=ExtResource( 1 )]
+position = Vector2( 388.871, 649.307 )
+
+[node name="Donut" parent="." instance=ExtResource( 2 )]
+position = Vector2( 114.104, 595.865 )
+scale = Vector2( 0.5, 0.5 )
