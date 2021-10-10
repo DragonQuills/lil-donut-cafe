@@ -4,14 +4,20 @@ using System;
 public class Main : Node
 {
     private Area2D _frier;
+    private PackedScene donutScene;
     public override void _Ready()
     {
         _frier = GetNode<Area2D>("Frier");
+        donutScene = GD.Load<PackedScene>("res://scenes/Donut/Donut.tscn");
+        _CreateDonut(new Vector2(100, 500), "chocolate_unbaked");
+        _CreateDonut(new Vector2(0, 0), "vanilla_unbaked");
+    }
 
-        var donutScene = GD.Load<PackedScene>("res://scenes/Donut/Donut.tscn");
-        var donut = donutScene.Instance();
+    private void _CreateDonut(Vector2 spawnPosition, string baseType){
+        Donut donut = (Donut)donutScene.Instance();
         AddChild(donut);
-        donut.Call("SetBase", "chocolate_unbaked");
-        donut.Connect("DonutReleased", _frier, "on_DonutReleased");
+        donut.SetBase(baseType);
+        donut.Position = spawnPosition;
+        donut.Connect("DonutReleased", _frier, "_on_DonutReleased");
     }
 }
