@@ -3,22 +3,22 @@ using System;
 
 public class Frier : Area2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+    Node bodyInFrier = null;
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        
+    private void _on_Frier_body_entered(Node body){
+        bodyInFrier = body;
+        GD.Print("Frier entered");
+    }
+    private void _on_Frier_body_exited(Node body){
+        bodyInFrier = null;
+        GD.Print("Frier exited");
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-    private void _on_Frier_body_entered(Node body){
-        GD.Print("Frier entered");
+    public void on_DonutReleased(KinematicBody2D donut){
+        GD.Print("connection successful");
+        if (donut == bodyInFrier){
+            GD.Print("There's a donut in here!");
+        }
+
     }
 }

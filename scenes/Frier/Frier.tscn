@@ -18,3 +18,4 @@ color = Color( 0.741176, 0.196078, 0.196078, 1 )
 polygon = PoolVector2Array( 315.509, -4.49097, 313.827, 266.278, 19.5137, 264.596, 26.2408, -6.17273 )
 
 [connection signal="body_entered" from="." to="." method="_on_Frier_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Frier_body_exited"]
