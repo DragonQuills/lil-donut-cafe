@@ -51,7 +51,10 @@ public class Donut : KinematicBody2D {
 	public void Bake(){
 		string currAnimation = _base.Animation;
 		int indexOfUnderscore = currAnimation.IndexOf("_");
-		_base.Animation = currAnimation.Remove(indexOfUnderscore, currAnimation.Length-indexOfUnderscore);
+		if(indexOfUnderscore != -1){
+			string newAnimation = currAnimation.Remove(indexOfUnderscore, currAnimation.Length - indexOfUnderscore);
+			_base.Animation = newAnimation;
+		}
 	}
 
 	public void SetBase(string baseType){

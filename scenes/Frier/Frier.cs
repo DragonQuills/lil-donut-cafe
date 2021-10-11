@@ -13,9 +13,12 @@ public class Frier : Area2D
         bodiesInFrier.Remove(body);
     }
 
-    private void _on_DonutReleased(Donut donut){
+    async private void _on_DonutReleased(Donut donut){
         if (bodiesInFrier.Contains(donut)){
             donut.draggable = false;
+            await ToSignal(GetTree().CreateTimer((float)1.0), "timeout");
+            donut.Bake();
+            donut.draggable = true;
         }
     }
 }
