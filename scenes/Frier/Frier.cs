@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Frier : Area2D
 {
     List<Node> bodiesInFrier = new List<Node>();
+    public int maxDonutsAtOnce = 1;
 
     private void _on_Frier_body_entered(Node body){
         bodiesInFrier.Add(body);
@@ -14,9 +15,10 @@ public class Frier : Area2D
     }
 
     async private void _on_DonutReleased(Donut donut){
-        if (bodiesInFrier.Contains(donut)){
+        if (bodiesInFrier.Contains(donut) && bodiesInFrier.Count <= maxDonutsAtOnce ){
             donut.draggable = false;
-            await ToSignal(GetTree().CreateTimer((float)1.0), "timeout");
+            donut.Position = this.Position;
+            await ToSignal(GetTree().CreateTimer((float)2.0), "timeout");
             donut.Bake();
             donut.draggable = true;
         }
