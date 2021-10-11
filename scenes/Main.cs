@@ -18,6 +18,7 @@ public class Main : Node
         AddChild(donut);
         donut.SetBase(baseType);
         donut.Position = spawnPosition;
+        donut.Scale = new Vector2((float)0.5, (float)0.5);
         donut.Connect("DonutReleased", _frier, "_on_DonutReleased");
     }
 }
