@@ -2,10 +2,13 @@ using Godot;
 using System;
 
 public class Donut : KinematicBody2D {
-	private bool dragging = false;
-	private int LEFT_MOUSE_BUTTON = 1;
-	Random _random;
+	public bool draggable = true;
+	private bool _dragging = false;
+	private Vector2 _touchPosition;
 
+    [Signal]
+    public delegate void DonutReleased(KinematicBody2D self);
+	Random _random;
 	private AnimatedSprite _base;
 	private AnimatedSprite _glaze;
 	
@@ -48,7 +51,10 @@ public class Donut : KinematicBody2D {
 	public void Bake(){
 		string currAnimation = _base.Animation;
 		int indexOfUnderscore = currAnimation.IndexOf("_");
-		_base.Animation = currAnimation.Remove(indexOfUnderscore, currAnimation.Length-indexOfUnderscore);
+		if(indexOfUnderscore != -1){
+			string newAnimation = currAnimation.Remove(indexOfUnderscore, currAnimation.Length - indexOfUnderscore);
+			_base.Animation = newAnimation;
+		}
 	}
 
 	public void SetBase(string baseType){
@@ -71,21 +77,34 @@ public class Donut : KinematicBody2D {
 	}
 
 	public override void _Process(float delta) {
-		if (dragging){
-			Vector2 mousePosition = GetViewport().GetMousePosition();
-			this.Position = mousePosition;
+		if (_dragging){
+			this.Position = _touchPosition;
 		}
 	}
 
 	public void _on_Donut_input_event(object viewport, object @event, int shape_idx) {
-		if(@event is InputEventMouseButton eventMouseButton){
-			if(eventMouseButton.ButtonIndex == LEFT_MOUSE_BUTTON){
-				dragging = !dragging;
+		if(@event is InputEventScreenTouch eventScreenTouch){
+			if(draggable && eventScreenTouch.Pressed && eventScreenTouch.Index == 0){
+				_touchPosition = eventScreenTouch.Position;
+				_dragging = true;
+			}
+			else{
+				_dragging = false;
+				EmitSignal(nameof(DonutReleased), this);
 			}
 		}
-		if(@event is InputEventScreenDrag eventScreenDrag){
-			this.Position = eventScreenDrag.Position;
-		}
+	}
 
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventScreenDrag eventScreenDrag)
+			if(_dragging){
+                _touchPosition = eventScreenDrag.Position;
+			}
+		if(@event is InputEventScreenTouch eventScreenTouch){
+			if(!eventScreenTouch.Pressed){
+				_dragging = false;
+			}
+		}
 	}
 }
