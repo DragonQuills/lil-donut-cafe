@@ -5,7 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76.9518, 61.4175 )
 
-[node name="Frier" type="Area2D"]
+[node name="Frier" type="Area2D" groups=[
+"stations",
+]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

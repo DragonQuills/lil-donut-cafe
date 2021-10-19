@@ -65,6 +65,11 @@ animations = [ {
 "name": "pink",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "yellow",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "tan",
@@ -73,11 +78,6 @@ animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "white",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": false,
-"name": "yellow",
 "speed": 5.0
 } ]
 
@@ -135,12 +135,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Donut" type="KinematicBody2D"]
+[node name="Donut" type="KinematicBody2D" groups=[
+"donuts",
+]]
 input_pickable = true
 script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
 
 [node name="Base" type="AnimatedSprite" parent="."]
