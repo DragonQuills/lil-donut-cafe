@@ -14,16 +14,9 @@ public class Plate : Area2D
         bodiesInPlate.Remove(body);
     }
 
-    async private void _on_DonutReleased(Donut donut){
-        foreach(var body in bodiesInPlate){
-            GD.Print(body.Name);
-        }
+    private void _on_DonutReleased(Donut donut){
         if (bodiesInPlate.Contains(donut) && bodiesInPlate.Count <= maxDonutsAtOnce ){
-            donut.draggable = false;
             donut.Position = this.Position;
-            await ToSignal(GetTree().CreateTimer((float)2.0), "timeout");
-            donut.Bake();
-            donut.draggable = true;
         }
     }
 }
