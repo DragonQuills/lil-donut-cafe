@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Stations/Station.cs" type="Script" id=1]
+
+[node name="Station" type="Area2D" groups=[
+"stations",
+]]
+script = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Station_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Station_body_exited"]
