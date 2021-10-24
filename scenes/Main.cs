@@ -6,6 +6,9 @@ public class Main : Node
     private Area2D _frier;
     private Area2D _plate;
     private PackedScene donutScene;
+    // Used to deterimine where the donut should return to if it is released
+    // when it isn't in a station.
+    private Node donutSnapNode;
 
     private Godot.Collections.Array _stations;
     public override void _Ready()
@@ -28,5 +31,9 @@ public class Main : Node
         foreach (Node station in _stations){
             donut.Connect("DonutReleased", station, "_on_DonutReleased");
         }
+    }
+
+    private void _on_DonutCaught(){
+        
     }
 }
