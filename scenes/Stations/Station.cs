@@ -2,7 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-[Tool]
 public class Station : Area2D
 {
     List<Node> bodiesInStation = new List<Node>();
