@@ -7,8 +7,6 @@ public class Station : Area2D
     List<Node> bodiesInStation = new List<Node>();
     public int maxBodiesAtOnce = 1;
 
-    [Signal]
-    public delegate void DonutInStation(KinematicBody2D donut);
     private void _on_Station_body_entered(Node body){
         bodiesInStation.Add(body);
     }
@@ -23,7 +21,10 @@ public class Station : Area2D
     private void _on_DonutReleased(Donut donut){
         if (bodiesInStation.Contains(donut) && bodiesInStation.Count <= maxBodiesAtOnce ){
             donut.Position = this.Position;
-            EmitSignal(nameof(DonutInStation), donut);
+            this._DonutInStation(donut);
         }
+    }
+    protected void _DonutInStation(Donut donut){
+        return;
     }
 }
