@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Stations/Frier/Frier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Frier/Frier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Plate/Plate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Main.cs" type="Script" id=3]
 
 
@@ -9,3 +11,6 @@ script = ExtResource( 3 )
 
 [node name="Frier" parent="." instance=ExtResource( 1 )]
 position = Vector2( 388.871, 649.307 )
+
+[node name="Plate" parent="." instance=ExtResource( 2 )]
+position = Vector2( 117.598, 142.544 )

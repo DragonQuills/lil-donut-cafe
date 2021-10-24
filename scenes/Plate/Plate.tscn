@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Plate/Plate.cs" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 82.7534
+
+[node name="Plate" type="Area2D" groups=[
+"stations",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -25.6053, -66.4676, -54.5835, -60.168, -69.7025, -43.789, -76.0021, -21.1104, -82.3018, 12.9074, -78.522, 49.4452, -59.8975, 59.9084, -40.9773, 71.681, -9.86415, 82.1922, 14.9423, 81.7717, 44.7941, 70.4196, 66.6574, 48.1359, 79.6913, 18.284, 80.9527, -9.88599, 69.6006, -44.3627, 45.635, -69.1692, 12.8401, -81.3622, -11.9664, -81.7826, -34.6706, -75.8964, -54.8521, -60.3398 )
+
+[connection signal="body_entered" from="." to="." method="_on_Plate_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Plate_body_exited"]
