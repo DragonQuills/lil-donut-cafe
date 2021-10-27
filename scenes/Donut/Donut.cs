@@ -16,6 +16,9 @@ public class Donut : KinematicBody2D {
 
 	private AnimatedSprite _sprinkles;
 
+	public Station mostRecentStation = null;
+	public Boolean isInStation = false;
+
 	// Options used to randomly generate a donut a customer wants
 	private string[] _baseOptions = { "vanilla", "chocolate" };
 	private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
@@ -57,6 +60,11 @@ public class Donut : KinematicBody2D {
 		}
 	}
 
+	public void ReturnToPreviousStation(){
+		this.Position = mostRecentStation.Position;
+        EmitSignal(nameof(DonutReleased), this);
+	}
+
 	public void SetBase(string baseType){
 		_base.Animation = baseType;
 		_base.Visible = true;
@@ -76,6 +84,10 @@ public class Donut : KinematicBody2D {
 		_sprinkles.Visible = true;
 	}
 
+	public void SetIsInStation(bool inStation){
+		isInStation = inStation;
+	}
+
 	public override void _Process(float delta) {
 		if (_dragging){
 			this.Position = _touchPosition;
@@ -90,7 +102,13 @@ public class Donut : KinematicBody2D {
 			}
 			else{
 				_dragging = false;
-				EmitSignal(nameof(DonutReleased), this);
+				if(isInStation){
+					EmitSignal(nameof(DonutReleased), this);
+				}
+				else{
+					this.ReturnToPreviousStation();
+				}
+
 			}
 		}
 	}
