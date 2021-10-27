@@ -37,14 +37,14 @@ animations = [ {
 "name": "vanilla_unbaked",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "chocolate_unbaked",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
 "name": "vanilla",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "chocolate_unbaked",
 "speed": 5.0
 } ]
 
