@@ -61,7 +61,9 @@ public class Donut : KinematicBody2D {
 	}
 
 	public void ReturnToPreviousStation(){
-		this.Position = mostRecentStation.Position;
+		if(mostRecentStation != null){
+			this.Position = mostRecentStation.Position;
+		}
         EmitSignal(nameof(DonutReleased), this);
 	}
 
