@@ -12,3 +12,6 @@ position = Vector2( 388.871, 649.307 )
 
 [node name="Plate" parent="." instance=ExtResource( 2 )]
 position = Vector2( 245.887, 283.306 )
+
+[node name="Plate2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 361.704, 117.599 )
