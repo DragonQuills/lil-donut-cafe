@@ -7,9 +7,12 @@ public class Station : Area2D
     List<Node> bodiesInStation = new List<Node>();
     public int maxBodiesAtOnce = 1;
 
+    public bool IsFull(){
+        return bodiesInStation.Count >= maxBodiesAtOnce;
+    }
     private void _on_Station_body_entered(Node body){
         bodiesInStation.Add(body);
-        if (body is Donut){
+        if (body is Donut && !this.IsFull()){
             Donut donut = body as Donut;
             donut.SetIsInStation(true);
         }
