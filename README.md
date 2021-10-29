@@ -3,6 +3,9 @@ A game about making and selling donuts. Built in Godot Mono and C# with assets f
 
 This game is currently **in the early stages of development** and has not yet had a release.
 
+## Usage
+Feel free to use this as an example project, for educational value, as or a start to your own projects! I just ask that you credit me and link back to this repository in an easily noticeable way, and follow the terms set out in the license.
+
 ## Setup Instructions
 To be added on first alpha release.
 
