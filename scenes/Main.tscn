@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Stations/Frier/Frier.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Stations/Plate/Plate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Main.cs" type="Script" id=3]
+[ext_resource path="res://scenes/Stations/Glazer/Glazer.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
@@ -11,7 +12,7 @@ script = ExtResource( 3 )
 position = Vector2( 388.871, 649.307 )
 
 [node name="Plate" parent="." instance=ExtResource( 2 )]
-position = Vector2( 245.887, 283.306 )
+position = Vector2( 386.213, 209.575 )
 
-[node name="Plate2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 361.704, 117.599 )
+[node name="Glazer" parent="." instance=ExtResource( 4 )]
+position = Vector2( 216.436, 468.548 )
