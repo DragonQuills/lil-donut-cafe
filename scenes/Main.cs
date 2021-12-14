@@ -10,8 +10,6 @@ public class Main : Node
     private Godot.Collections.Array _stations;
     public override void _Ready()
     {
-        _frier = GetNode<Area2D>("Frier");
-        _plate = GetNode<Area2D>("Plate");
         _stations = GetTree().GetNodesInGroup("stations");
 
         donutScene = GD.Load<PackedScene>("res://scenes/Donut/Donut.tscn");
