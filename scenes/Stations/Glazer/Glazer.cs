@@ -7,21 +7,29 @@ public class Glazer : Station
     // TODO: Put this in a user config file
     private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
     private int selectedGlaze = 0;
+    private Dictionary<string, Color> glazeToColor= new Dictionary<string, Color>{
+            {"pink", new Color("FF99CC")},
+
+        };
     private Button _glazeButton;
 
     // TODO: Set the color of the glaze button based on the glaze type that the donut will be glazed
     public override void _Ready()
-    {
+    {  
         _glazeButton = GetNode<Button>("GlazeButton");
 
-        Color pink = new Color("FF99CC");
+        _SetButtonColor("pink");
+    }
+
+    private void _SetButtonColor(string color){
         StyleBoxFlat s = new StyleBoxFlat();
-        s.BgColor = pink;
+        s.BgColor = glazeToColor[color];
 
         _glazeButton.AddStyleboxOverride("normal", s);
         _glazeButton.AddStyleboxOverride("pressed", s);
         _glazeButton.AddStyleboxOverride("hover", s);
     }
+
     override protected void _DonutInStation(Donut donut)
     {
         donut.Position = this.Position;
@@ -35,6 +43,7 @@ public class Glazer : Station
                 donut.SetGlaze(this._glazeOptions[this.selectedGlaze]);
             }
         }
+        
     }
 
     private void _on_NextButton_pressed()
