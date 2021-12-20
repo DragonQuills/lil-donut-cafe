@@ -22,8 +22,7 @@ public class Glazer : Station
     public override void _Ready()
     {  
         _glazeButton = GetNode<Button>("GlazeButton");
-
-        _SetButtonColor("pink");
+        this._SetButtonColor(this._glazeOptions[this.selectedGlaze]);
     }
 
     private void _SetButtonColor(string color){
@@ -59,6 +58,7 @@ public class Glazer : Station
         else{
             this.selectedGlaze += 1;
         }
+        this._SetButtonColor(this._glazeOptions[this.selectedGlaze]);
     }
 
     private void _on_PrevButton_pressed()
@@ -71,6 +71,7 @@ public class Glazer : Station
         {
             this.selectedGlaze -= 1;
         }
+        this._SetButtonColor(this._glazeOptions[this.selectedGlaze]);
     }
 }
 
