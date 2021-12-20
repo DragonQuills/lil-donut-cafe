@@ -9,6 +9,11 @@ public class Glazer : Station
     private int selectedGlaze = 0;
     private Dictionary<string, Color> glazeToColor= new Dictionary<string, Color>{
             {"pink", new Color("FF99CC")},
+            {"yellow", new Color("FFCC00")},
+            {"green", new Color("66CC99")},
+            {"tan", new Color("DBB17D")},
+            {"brown", new Color("5F4F38")},
+            {"white", new Color("EEEEEE")},
 
         };
     private Button _glazeButton;
