@@ -18,7 +18,6 @@ public class Glazer : Station
         };
     private Button _glazeButton;
 
-    // TODO: Set the color of the glaze button based on the glaze type that the donut will be glazed
     public override void _Ready()
     {  
         _glazeButton = GetNode<Button>("GlazeButton");
