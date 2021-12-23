@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Station : Area2D
 {
-    List<Node> bodiesInStation = new List<Node>();
+    protected List<Node> bodiesInStation = new List<Node>();
     public int maxBodiesAtOnce = 1;
 
     public bool IsFull(){

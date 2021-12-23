@@ -19,8 +19,10 @@ public class Donut : KinematicBody2D {
 	public Station mostRecentStation = null;
 	public Boolean inStation = false;
 
-	// Options used to randomly generate a donut a customer wants
-	private string[] _baseOptions = { "vanilla", "chocolate" };
+    // Options used to randomly generate a donut a customer wants
+    // TODO: Put this stuff in a user config file
+
+    private string[] _baseOptions = { "vanilla", "chocolate" };
 	private string[] _glazeOptions = { "brown", "green", "pink", "tan", "white", "yellow" };
 	private string[] _stripeOptions = {"brown", "white"};
 	private string[] _sprinkleOptions = {"brown", "confetti", "gold", "purple", "white"};
