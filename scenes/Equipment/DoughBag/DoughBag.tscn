@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/Stations/DoughBag/DoughBag.cs" type="Script" id=1]
+[ext_resource path="res://scenes/Equipment/DoughBag/DoughBag.cs" type="Script" id=1]
 [ext_resource path="res://assets/Stations/DoughBags/chocolate-dough-bag.png" type="Texture" id=2]
 [ext_resource path="res://assets/Stations/DoughBags/vanilla-dough-bag.png" type="Texture" id=3]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

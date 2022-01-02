@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/Stations/Frier/Frier.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Stations/Plate/Plate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Equipment/Stations/Frier/Frier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Equipment/Stations/Plate/Plate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Main.cs" type="Script" id=3]
-[ext_resource path="res://scenes/Stations/Glazer/Glazer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Stations/DoughBag/DoughBag.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Equipment/Stations/Glazer/Glazer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Equipment/DoughBag/DoughBag.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
@@ -19,4 +19,4 @@ position = Vector2( 386.213, 209.575 )
 position = Vector2( 382.772, 464.31 )
 
 [node name="DoughBag" parent="." instance=ExtResource( 5 )]
-position = Vector2( 82.2738, 578.203 )
+position = Vector2( 77.912, 596.326 )

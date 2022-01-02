@@ -7,7 +7,7 @@ public class DoughBag : Area2D
     {
         if (@event is InputEventScreenTouch eventScreenTouch && eventScreenTouch.Pressed)
         {
-            GD.Print("Bag clicked")
+            GD.Print("Bag clicked");
         }
     }
 }
