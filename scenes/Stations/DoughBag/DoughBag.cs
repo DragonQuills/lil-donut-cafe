@@ -3,44 +3,11 @@ using System;
 
 public class DoughBag : Area2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public void _on_DoughBag_input_event(object viewport, object @event, int shape_idx)
     {
-        
-    }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
-    public void _on_Donut_input_event(object viewport, object @event, int shape_idx)
-    {
-        if (@event is InputEventScreenTouch eventScreenTouch)
+        if (@event is InputEventScreenTouch eventScreenTouch && eventScreenTouch.Pressed)
         {
-            
-            // if (draggable && eventScreenTouch.Pressed && eventScreenTouch.Index == 0)
-            // {
-            //     _touchPosition = eventScreenTouch.Position;
-            //     _dragging = true;
-            // }
-            // else
-            // {
-            //     _dragging = false;
-            //     if (inStation)
-            //     {
-            //         EmitSignal(nameof(DonutReleased), this);
-            //     }
-            //     else
-            //     {
-            //         this.ReturnToPreviousStation();
-            //     }
-
-            // }
+            GD.Print("Bag clicked")
         }
     }
 }
