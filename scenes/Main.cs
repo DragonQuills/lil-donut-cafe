@@ -15,6 +15,7 @@ public class Main : Node
         _frier = GetNode<Station>("Frier");
         _plate = GetNode<Station>("Plate");
         _doughBag = GetNode<Station>("DoughBag");
+        _doughBag.Connect("SpawnDonut", this, nameof(_on_SpawnDonut));
         _stations = GetTree().GetNodesInGroup("stations");
 
         donutScene = GD.Load<PackedScene>("res://scenes/Donut/Donut.tscn");
@@ -22,7 +23,7 @@ public class Main : Node
         _CreateDonut(new Vector2(0, 0), "vanilla_unbaked");
     }
 
-    private void _CreateDonut(Vector2 spawnPosition, string baseType){
+    private Donut _CreateDonut(Vector2 spawnPosition, string baseType){
         Donut donut = (Donut)donutScene.Instance();
         AddChild(donut);
         donut.SetBase(baseType);
@@ -31,6 +32,13 @@ public class Main : Node
         foreach (Node station in _stations){
             donut.Connect("DonutReleased", station, "_on_DonutReleased");
         }
+        return donut;
     }
 
+    private void _on_SpawnDonut(Vector2 pos, String donutType){
+        GD.Print("spawning a donut");
+        Donut donut = _CreateDonut(pos, donutType + "_unbaked");
+        donut.dragging = true;
+        donut.mostRecentStation = _doughBag;
+    }
 }

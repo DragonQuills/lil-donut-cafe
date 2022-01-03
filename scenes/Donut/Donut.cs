@@ -3,7 +3,7 @@ using System;
 
 public class Donut : KinematicBody2D {
 	public bool draggable = true;
-	private bool _dragging = false;
+	public bool dragging = false;
 	private Vector2 _touchPosition;
 
     [Signal]
@@ -93,7 +93,7 @@ public class Donut : KinematicBody2D {
 	}
 
 	public override void _Process(float delta) {
-		if (_dragging){
+		if (dragging){
 			this.Position = _touchPosition;
 		}
 	}
@@ -102,10 +102,10 @@ public class Donut : KinematicBody2D {
 		if(@event is InputEventScreenTouch eventScreenTouch){
 			if(draggable && eventScreenTouch.Pressed && eventScreenTouch.Index == 0){
 				_touchPosition = eventScreenTouch.Position;
-				_dragging = true;
+				dragging = true;
 			}
 			else{
-				_dragging = false;
+				dragging = false;
 				if(inStation){
 					EmitSignal(nameof(DonutReleased), this);
 				}
@@ -120,12 +120,12 @@ public class Donut : KinematicBody2D {
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventScreenDrag eventScreenDrag)
-			if(_dragging){
+			if(dragging){
                 _touchPosition = eventScreenDrag.Position;
 			}
 		if(@event is InputEventScreenTouch eventScreenTouch){
 			if(!eventScreenTouch.Pressed){
-				_dragging = false;
+				dragging = false;
 			}
 		}
 	}
