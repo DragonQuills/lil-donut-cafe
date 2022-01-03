@@ -36,7 +36,6 @@ public class Main : Node
     }
 
     private void _on_SpawnDonut(Vector2 pos, String donutType){
-        GD.Print("spawning a donut");
         Donut donut = _CreateDonut(pos, donutType + "_unbaked");
         donut.dragging = true;
         donut.mostRecentStation = _doughBag;

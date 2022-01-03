@@ -66,7 +66,12 @@ public class Donut : KinematicBody2D {
 		if(mostRecentStation != null){
 			this.Position = mostRecentStation.Position;
 		}
-        EmitSignal(nameof(DonutReleased), this);
+        
+		EmitSignal(nameof(DonutReleased), this);
+		
+		if(mostRecentStation is DoughBag){
+			this.QueueFree();
+		}
 	}
 
 	public void SetBase(string baseType){
