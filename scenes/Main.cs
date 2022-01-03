@@ -3,15 +3,18 @@ using System;
 
 public class Main : Node
 {
-    private Area2D _frier;
-    private Area2D _plate;
+    private Station _frier;
+    private Station _plate;
+
+    private Station _doughBag;
     private PackedScene donutScene;
 
     private Godot.Collections.Array _stations;
     public override void _Ready()
     {
-        _frier = GetNode<Area2D>("Frier");
-        _plate = GetNode<Area2D>("Plate");
+        _frier = GetNode<Station>("Frier");
+        _plate = GetNode<Station>("Plate");
+        _doughBag = GetNode<Station>("DoughBag");
         _stations = GetTree().GetNodesInGroup("stations");
 
         donutScene = GD.Load<PackedScene>("res://scenes/Donut/Donut.tscn");
